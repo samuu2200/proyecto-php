@@ -27,14 +27,16 @@ git clone git@github.com:samuu2200/proyecto-php.git
 cd proyecto-php
 ```
 
-## ✅ 2. Añade un ejemplo del `.env`
+### ✅ 2. Crear archivo `.env`
 
-Debajo de los pasos, puedes añadir:
+Este proyecto incluye un archivo env.example con las variables necesarias.
+Puedes copiarlo y modificarlo a tu gusto:
 
+```bash
+cp env.example .env
+```
 
-### 1. Crear archivo `.env`
-
-Copia este contenido en un archivo llamado `.env`:
+Contenido del .env (ejemplo)
 
 ```dotenv
 MYSQL_ROOT_PASSWORD=root
@@ -42,3 +44,13 @@ MYSQL_DATABASE=testdb
 MYSQL_USER=user
 MYSQL_PASSWORD=password 
 ```
+
+### 🛠️ Comandos útiles
+
+```bash
+docker-compose up             # Inicia todos los servicios
+docker-compose down           # Detiene y elimina contenedores
+docker ps                     # Ver contenedores activos
+docker exec -it php-app bash  # Accede al contenedor PHP
+docker exec -it php-web bash  # Accede al contenedor NGINX
+``
