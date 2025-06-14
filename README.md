@@ -54,3 +54,11 @@ docker ps                     # Ver contenedores activos
 docker exec -it php-app bash  # Accede al contenedor PHP
 docker exec -it php-web bash  # Accede al contenedor NGINX
 ```
+
+---
+
+## 🤝 Autor
+
+Desarrollado por **Samuel Quintero**
+🔗 github.com/samuu2200
+
