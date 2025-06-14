@@ -1,0 +1,24 @@
+# Evita subir configuraciones sensibles
+.env
+
+# Archivos de entorno Docker
+*.log
+*.pid
+*.sock
+
+# Volúmenes y datos temporales
+vendor/
+node_modules/
+composer.lock
+
+# Archivos generados
+*.tar
+*.gz
+*.zip
+
+# Configuración del editor
+.vscode/
+.idea/
+
+# MacOS
+.DS_Store
