@@ -32,7 +32,7 @@ cd proyecto-php
 Debajo de los pasos, puedes añadir:
 
 
-### 3. Crear archivo `.env`
+### 1. Crear archivo `.env`
 
 Copia este contenido en un archivo llamado `.env`:
 
