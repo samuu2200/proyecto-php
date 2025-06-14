@@ -53,4 +53,4 @@ docker-compose down           # Detiene y elimina contenedores
 docker ps                     # Ver contenedores activos
 docker exec -it php-app bash  # Accede al contenedor PHP
 docker exec -it php-web bash  # Accede al contenedor NGINX
-``
+```
