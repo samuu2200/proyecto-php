@@ -31,9 +31,8 @@ cd proyecto-php
 
 Debajo de los pasos, puedes añadir:
 
-```markdown
+
 ### 3. Crear archivo `.env`
-```
 
 Copia este contenido en un archivo llamado `.env`:
 
