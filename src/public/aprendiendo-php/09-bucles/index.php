@@ -22,4 +22,45 @@ while ($numero <= 100) {
     $numero++;
 }
 
+echo '<hr>';
+
+// Ejemplo
+if (isset($_GET['numero'])) {
+    
+    // Cambiar tipo de dato
+    $numero = (int) $_GET['numero'];
+    
+} else {
+    $numero = 1;
+}
+
+echo "<h1>Tabla de multiplicar del número $numero</h1>";
+
+$contador = 1;
+while ($contador <= 10) {
+    echo "$numero x $contador = " . ($numero * $contador) . "<br/>";
+    $contador++;
+}
+
+/* 
+    DO WHILE 
+do {
+    // Bloque de instrucciones
+} while (condicion); 
+*/
+
+echo '<hr>';
+echo "<h1>Prueba con el do-while</h1>";
+
+$edad = 18;
+$contador = 1;
+do {
+
+    echo "Tienes acceso al local privado $contador <br>";
+    $contador++;
+
+} while ($edad >= 18 && $contador <= 10);
+
+
+
 ?>
