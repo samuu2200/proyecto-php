@@ -1,7 +1,7 @@
 <?php 
 
 $deportes = [
-    "deportes" => "FIFA", "PES", "MOTOGP",
+    "FIFA", "PES", "MOTOGP",
 ];
 
 ?>

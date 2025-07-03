@@ -1,7 +1,7 @@
 <?php 
 
 $accion = [
-    "accion" => "GTA", "COD", "PUGB",
+    "GTA", "COD", "PUGB",
 ];
 
 ?>

@@ -17,17 +17,17 @@ include __DIR__ . "/aventura.php";
 include __DIR__ . "/deportes.php";
 
 $juegos = [
-    $accion,
-    $aventura,
-    $deportes
+    'accion' => $accion,
+    'aventura' => $aventura,
+    'deportes' => $deportes
 ];
 
 echo "<table border='1' cellpadding='3'";
 if (!empty($juegos)) {
     // Tomamos las claves del primer juego para cabecera dinámica
     echo "<tr>";
-    foreach (array_keys($juegos[0]) as $clave) {
-        echo "<th>" . htmlspecialchars($clave) . "</th>";
+    foreach (array_keys($juegos) as $categoria) {
+        echo "<th>" . htmlspecialchars($categoria) . "</th>";
     }
     echo "</tr>";
 
