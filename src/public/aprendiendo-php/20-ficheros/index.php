@@ -54,4 +54,7 @@ if (fwrite($archivo, $texto) === false) {
 
 fclose($archivo);
 
+// Copiar
+copy('fichero.txt', 'fichero_copiado.txt') or die("Error al copiar");
+
 ?>
