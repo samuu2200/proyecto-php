@@ -13,19 +13,17 @@ if (!file_exists($rutaCSV)) {
 }
 
 $archivo = fopen($rutaCSV, 'r');
-if (!$archivo) {
-    die("No se ha podido abrir el archivo CSV");
-}
+if (!$archivo) die("No se ha podido abrir el archivo");
 
-echo "<h3>Tabla de usuarios</h3>";
-echo "<table border='1' cellpadding='5'>";
+echo "<h1>Tabla de usuarios</h1>";
+echo "<table border='1' cellpadding='5' >";
 $esCabecera = true;
 
 while (!feof($archivo)) {
     $fila = fgetcsv($archivo);
 
     if ($fila === false || $fila === [null]) continue;
-    
+
     echo "<tr>";
     foreach ($fila as $celda) {
         $celda = htmlspecialchars($celda);
@@ -34,6 +32,7 @@ while (!feof($archivo)) {
             : "<td>$celda</td>";
     }
     echo "</tr>";
+
     $esCabecera = false;
 }
 echo "</table>";
