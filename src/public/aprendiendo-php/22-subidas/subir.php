@@ -3,49 +3,43 @@
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $archivo = $_FILES['archivo'] ?? null;
 
-    // Validar que se ha subido un archivo sin errores
     if (!$archivo || $archivo['error'] !== UPLOAD_ERR_OK) {
-        echo "Error en la subida del archivo.";
+        echo "Error al subir el archivo.";
         exit;
-    } 
+    }
 
-    // Validar el tipo MIME del archivo subido
     $finfo = finfo_open(FILEINFO_MIME_TYPE);
-    $mime = finfo_file($finfo, $archivo['tmp_name']);
+    $tipo = finfo_file($finfo, $archivo['tmp_name']);
     finfo_close($finfo);
 
-    $tiposPermitidos = ['image/jpeg', 'image/png', 'image/jpg', 'image/gif'];
-    if (!in_array($mime, $tiposPermitidos)) {
-        echo "Tipo de archivo no permitido. Solo se permiten imágenes JPEG, PNG y GIF.";
-        exit;
-    }
-
-    $maxSize = 2 * 1024 * 1024; // 2MB
-    if ($archivo['size'] > $maxSize) {
-        echo "El archivo es demasiado grande. El tamaño máximo permitido es 2MB.";
+    $tiposPermitidos = ['image/jpeg', 'image/png', 'image/gif'];
+    if (!in_array($tipo, $tiposPermitidos)) {
+        echo "Tipo de archivo no permitido.";
         exit;   
     }
- 
-    $directorio = __DIR__ . '/uploads/';
-    if (!is_dir($directorio)) {
-        mkdir($directorio, 0755);
+
+    $tamanioMaximo = 2 * 1024 * 1024; // 2MB
+    if ($archivo['size'] > $tamanioMaximo) {
+        echo "El archivo es demasiado grande. El tamaño máximo es 2MB.";
+        exit;
+    }   
+
+    $directiorioSubidas = __DIR__ . '/uploads/';
+    if (!is_dir($directiorioSubidas)) {
+        mkdir($directiorioSubidas, 0755, true);
     }
 
-    $nombre_limpio = preg_replace("/[^A-Z0-9._-]/i", "_", $archivo['name']);
+    $nombreArchivo = preg_match('/^[a-zA-Z0-9._-]+$/', $archivo['name']) ? $archivo['name'] : uniqid('file_', true);
+    $rutaDestino = $directiorioSubidas . $nombreArchivo;    
 
-    // 6. Evitar sobrescritura (añadir timestamp o id único)
-    $nombre_final = uniqid() . '_' . $nombre_limpio;
-
-    // 7. Mover el archivo subido
-    $ruta_final = $directorio . '/' . $nombre_final;
-
-    if (move_uploaded_file($archivo['tmp_name'], $ruta_final)) {
-        echo "✅ Archivo subido correctamente como $nombre_final";
+    if (move_uploaded_file($archivo['tmp_name'], $rutaDestino)) {
+        $successUrl = "index.php?upload=success&nombreArchivo=" . urlencode($nombreArchivo);
+        header("Location: $successUrl");
+        exit;
     } else {
-        echo "❌ Error al mover el archivo.";
+        echo "Error al mover el archivo subido.";
     }
-
 } else {
-    echo "No se ha enviado ningún archivo.";
+    echo "Método de solicitud no válido.";
 }
 ?>
